@@ -14,24 +14,33 @@ declare(strict_types=1);
 
 namespace Kreta\SharedKernel\Event;
 
-class Event
+use Kreta\SharedKernel\Domain\Model\AsyncDomainEvent;
+
+class AsyncEvent implements AsyncDomainEvent
 {
     private $name;
+    private $occurredOn;
     private $values;
 
-    public function __construct($name, $values)
+    public function __construct($name, \DateTimeInterface $occurredOn, array $values)
     {
         $this->name = $name;
+        $this->occurredOn = $occurredOn;
         $this->values = $values;
     }
 
-    public function name()
+    public function name() : string
     {
         return $this->name;
     }
 
-    public function values()
+    public function values() : array
     {
         return $this->values;
+    }
+
+    public function occurredOn() : \DateTimeInterface
+    {
+        return $this->occurredOn;
     }
 }
