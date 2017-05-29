@@ -12,13 +12,9 @@
 
 declare(strict_types=1);
 
-namespace Kreta\SharedKernel\Event;
+namespace Kreta\SharedKernel\Domain\Model\Identity;
 
-use Kreta\SharedKernel\Domain\Model\Identity\BaseId as Id;
-
-interface EventStore
+interface EventSourcedAggregateRootId
 {
-    public function appendTo(EventStream $stream) : void;
-
-    public function streamOfId(Id $aggregateRootId) : EventStream;
+    public function id() : string;
 }
