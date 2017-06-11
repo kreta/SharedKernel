@@ -12,13 +12,9 @@
 
 declare(strict_types=1);
 
-namespace Kreta\SharedKernel\Projection;
+namespace Kreta\SharedKernel\Infrastructure\Domain\ReadModel;
 
-use Kreta\SharedKernel\Domain\Model\DomainEvent;
-
-interface EventHandler
+interface ElasticsearchSearchSpecification
 {
-    public function eventType() : string;
-
-    public function handle(DomainEvent $event) : void;
+    public function buildSearch(string $index, string $type) : array;
 }
