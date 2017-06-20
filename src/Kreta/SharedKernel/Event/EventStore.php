@@ -16,7 +16,9 @@ namespace Kreta\SharedKernel\Event;
 
 interface EventStore
 {
-    public function appendTo(Stream $stream) : void;
+    public function append(Stream $stream) : void;
 
     public function streamOfName(StreamName $name) : Stream;
+
+    public function eventsSince(?\DateTimeInterface $since, int $offset = 0, int $limit = -1) : array;
 }
